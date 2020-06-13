@@ -1,0 +1,22 @@
+n = list(map(int,input().split()))
+def MergedSort(left, right):
+    i = 0
+    Res = []
+    j = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            Res.append(left[i]) 
+            i += 1 
+        else:
+            Res.append(right[j])
+            j += 1 
+    Res += left[i:] + right[j:] 
+    return (Res)
+def MergeSort(A): 
+    if len(A) <= 1: 
+        return A 
+    else:
+        L = A[:len(A) // 2] 
+        R = A[len(A) // 2:] 
+    return MergedSort(MergeSort(L), MergeSort(R))
+MergeSort(n)
