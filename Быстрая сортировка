@@ -1,0 +1,17 @@
+B = list(map(int,input().split())) # сортируемый массив 
+def Partition(A,p,r): # функция которая позволяет найти индекс опорного элемента 
+    q = p # q - граница которая разделяет сортируемый список на две части (LEFT and RIGHT)
+    for i in range(p,r):
+        if A[i] <= A[r]: # Если элемент соответствует группе LEFT , то мы помещаем его в группу LEFT и сдвигаем границу между LEFT и RIGHT
+            A[q],A[i] = A[i],A[q]
+            q += 1
+    A[q],A[r] = A[r],A[q]
+    return(q)
+def QuickSort(A,p,r): # рекурсивная функция для разбиения исходного списка
+    if p >= r:
+        return
+    else:
+        q = Partition(A,p,r)
+        return(QuickSort(A,p,q-1),QuickSort(A,q+1,r))
+QuickSort(B,0,len(B)-1)
+print(B)
