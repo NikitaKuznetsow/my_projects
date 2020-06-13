@@ -1,0 +1,15 @@
+A = list(map(int,input().split()))
+key = int(input())
+def BinarySearch(S,p,r):
+    q = (p + r)//2
+    if key > S[q]:
+        return(BinarySearch(S,q+1,r))
+    elif key < S[q]:
+        return(BinarySearch(S,p,q-1))
+    elif key == S[q]:
+        return q
+    else:
+        return 
+
+print(BinarSearch(A,0,len(A)-1))
+# нужно научиться обрабатывать запрос при осуттствии элемента в списке
